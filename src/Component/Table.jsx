@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import UseTablNav from './UseTablNav'
 
 const ROW = 1000
 const COLUMN = 26
@@ -16,8 +17,12 @@ const getcolumnName = (index) => {
 const Table = () => {
   const [cell, setcell] = useState({})
   const [selectedCell, setselectedCell] = useState('A1')
-  const [cell_border, setcell_border] = useState(false)
 
+const handleKeyDown = UseTablNav({
+  rows: ROW,
+  columns: COLUMN,
+  setSelectedCell: setselectedCell,
+})
   const updatedCell = (address, value) => {
     setcell((prev) => ({
       ...prev,
@@ -85,6 +90,7 @@ const Table = () => {
                       onChange={(e) =>
                         updatedCell(address, e.target.value)
                       }
+                      onKeyDown={(e) => handleKeyDown(e, address)}
                       className='h-7 w-full min-w-30 px-2 outline-none'
                     />
                   </td>

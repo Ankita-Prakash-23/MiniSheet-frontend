@@ -7,7 +7,7 @@ import Footer from './Component/Footer'
 const App = () => {
   
   return (
-    <div >
+    <div  className='overflow-auto max-h-screen [&::-webkit-scrollbar]:hidden h-full w-full scrollbar'>
       <Navbar></Navbar>
       <Mathematics></Mathematics>
       <Table></Table>
